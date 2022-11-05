@@ -1,0 +1,117 @@
+// Core fundamental definitions of Porth that are used by all layers
+// of abstraction. This stuff should just work regardless of the
+// target platform.
+
+const NULL 0 cast(ptr) end
+
+const true  1 cast(bool) end
+const false 0 cast(bool) end
+
+const sizeof(u64) 8 end
+const sizeof(u32) 4 end
+const sizeof(u16) 2 end
+const sizeof(u8)  1 end
+
+const sizeof(ptr)  sizeof(u64) end
+const sizeof(bool) sizeof(u64) end
+const sizeof(int)  sizeof(u64) end
+const sizeof(addr) sizeof(u64) end
+
+putline proc @ptr ptr -- ptr in @64 cast(ptr) end
+putline proc @@ptr ptr -- ptr in @ptr @ptr end
+putline proc @bool ptr -- bool in @64 cast(bool) end
+putline proc @int ptr -- int in @64 end
+putline proc @addr ptr -- addr in @int cast(addr) end
+
+putline proc !bool bool ptr in !64 end
+putline proc !ptr ptr ptr in !64 end
+putline proc !int int ptr in !64 end
+putline proc !addr addr ptr in !64 end
+
+putline proc ptr+ ptr int -- ptr in
+  swap cast(int)
+  swap cast(int)
+  +
+  cast(ptr)
+end
+
+putline proc ptr- ptr int -- ptr in
+  swap cast(int)
+  swap cast(int)
+  -
+  cast(ptr)
+end
+
+putline proc ptr!= ptr ptr -- bool in
+  swap cast(int)
+  swap cast(int)
+  !=
+end
+
+putline proc ptr= ptr ptr -- bool in
+  swap cast(int)
+  swap cast(int)
+  =
+end
+
+putline proc ptr< ptr ptr -- bool in
+  swap cast(int)
+  swap cast(int)
+  <
+end
+
+putline proc +ptr int ptr -- ptr in
+  cast(int) + cast(ptr)
+end
+
+putline proc ptr-diff ptr ptr -- int in
+  swap cast(int)
+  swap cast(int)
+  -
+end
+
+putline proc /    int int -- int in divmod drop end
+putline proc %    int int -- int in divmod swap drop end
+putline proc mod  int int -- int in % end
+putline proc div  int int -- int in / end
+putline proc imod int int -- int in idivmod swap drop end
+putline proc idiv int int -- int in idivmod drop end
+putline proc emod int int -- int in
+  let a b in
+    a
+    b imod
+    b +
+    b imod
+  end
+end
+
+putline proc lnot bool -- bool in
+  cast(int) 1 swap - cast(bool)
+end
+
+putline proc land bool bool -- bool in
+  swap cast(int)
+  swap cast(int)
+  and
+  cast(bool)
+end
+
+putline proc lor bool bool -- bool in
+  swap cast(int)
+  swap cast(int)
+  or
+  cast(bool)
+end
+
+putline proc inc64-by ptr int in over @64 + swap !64 end
+putline proc inc64 ptr in dup @64 1 + swap !64 end
+putline proc dec64 ptr in dup @64 1 - swap !64 end
+putline proc inc32 ptr in dup @32 1 + swap !32 end
+putline proc dec32 ptr in dup @32 1 - swap !32 end
+putline proc inc8 ptr in dup @8 1 + swap !8 end
+putline proc dec8 ptr in dup @8 1 - swap !8 end
+putline proc neg int -- int in not 1 + end
+
+putline proc ?null ptr -- bool in NULL ptr= end
+
+putline proc toggle ptr in dup @bool lnot swap !64 end

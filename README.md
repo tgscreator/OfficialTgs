@@ -11,8 +11,8 @@ Fully Made Programming Language
 
 ### Setup Your Environment For TGSharp
 
-**-c is used for compiling and building the source code.**
-**-c and -r together compile/build and run the executable.**
+**'-c' is used for compiling and building the source code.**
+**'-c' and '-r' together compile/build and run the executable.**
 
 ```
 NOTICE: Get the executable from libraries! Called: 'tgs'
@@ -25,7 +25,7 @@ $ ./tgs -c -r <./file.tgs>
 
 **Hello World**
 ```
-include "std.tgs"
+include "stdlib.tgs"
 
 proc main in
    "Hello, World!\n" puts

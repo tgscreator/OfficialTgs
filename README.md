@@ -28,7 +28,7 @@ $ ./tgs -c -r <./file.tgs>
 include "stdlib.tgs"
 
 proc main in
-   "Hello, World!\n" puts
+   "Hello, World!\n" oputs
 end
 ```
 

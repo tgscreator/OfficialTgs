@@ -4,6 +4,11 @@ Fully Made Programming Language
 **[Tsoding](https://gitlab.com/tsoding/porth/-/blob/master/LICENSE)**
 ![LogoTGSFinals](https://user-images.githubusercontent.com/112824573/200144100-a382077c-a0a3-4ee4-8844-b3348d166939.jpg)
 
+**## NOTICE REQUIREMENTS!**
+*This Needs to be done first, or it will not work properly*
+
+- Have Fasm Installed
+
 ## Info
 - [x] Self compiling
 - [x] Turing Complete
